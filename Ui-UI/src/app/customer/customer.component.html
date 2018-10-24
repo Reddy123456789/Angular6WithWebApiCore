@@ -1,0 +1,55 @@
+
+<!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <input name="first" ngModel required #first="ngModel">
+  <input name="last" ngModel>
+  <button>Submit</button>
+</form>
+<p>First name value: {{ first.value }}</p>
+    <p>First name valid: {{ first.valid }}</p>
+    <p>Form value: {{ f.value | json }}</p>
+    <p>Form valid: {{ f.valid }}</p> -->
+<br>
+<!-- style="padding-left: 200px; width: 60%;" -->
+<div class="container">
+     <form #savecustomerform="ngForm" (ngSubmit)="saveCustomer(icustomer)"  class="panel panel-default">
+     <div class="panel-body">
+      <div class="form-group row" [class.has-error] = "CustomerName.invalid && CustomerName.touched">
+          <label for="CustomerName" class="col-sm-2 col-form-label control-label">Customer Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="CustomerName" id="CustomerName" required
+          [(ngModel)]="icustomer.CustomerName" placeholder="CustomerName" #CustomerName="ngModel">
+          <span class="help-block" *ngIf="CustomerName.invalid && CustomerName.touched">
+            Customer Name is required
+          </span>
+        </div>
+      </div>
+      <div class="form-group row" [class.has-error] = "CustomerCode.invalid && CustomerCode.touched">
+        <label for="CustomerCode" class="col-sm-2 col-form-label control-label">Customer Code</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="CustomerCode" id="CustomerCode" required pattern="^(0|[1-9][0-9]*)$"
+          [(ngModel)]="icustomer.CustomerCode" id="CustomerCode" placeholder="Customer Code" #CustomerCode="ngModel">
+          <span class="help-block" *ngIf="CustomerCode.invalid && CustomerCode.touched">
+            Customer Code Should be numbers
+          </span>
+        </div>
+      </div>
+      <!-- <div class="form-group row"  [hidden]="!savecustomerform.valid">
+          <div class="col-sm-6">
+          <span>Hello div 2 - form is valid</span>
+        </div>
+        </div> -->
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <!-- <button type="button" [disabled]="!savecustomerform.valid" routerLink="/contact" class="btn btn-primary">Submit</button> -->
+          <button type="submit" [disabled]="!savecustomerform.valid" class="btn btn-primary">Submit</button>
+        </div>
+
+      </div>
+
+
+    </div>
+    </form>
+  </div>
+
+    Angular Generated Form Model : {{savecustomerform.value | json}}
+
